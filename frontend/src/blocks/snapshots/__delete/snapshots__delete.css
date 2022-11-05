@@ -1,0 +1,16 @@
+.snapshots__delete {
+    width: 18px;
+    height: 19px;
+    background-image: url(../../../images/delete-button.svg);
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.snapshots__delete:hover {
+    opacity: 0.6;
+}

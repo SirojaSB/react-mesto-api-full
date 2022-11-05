@@ -1,0 +1,17 @@
+.profile__avatar-container {
+    width: 120px;
+    height: 120px;
+    background-image: url("../../../images/Avatar-Button.svg");
+    display: flex;
+    margin: 0 30px 0 0;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+@media screen and (max-width: 791px) {
+    .profile__avatar-container {
+        margin: 0 0 20px 0;
+    }
+}
