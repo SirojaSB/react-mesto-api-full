@@ -1,0 +1,14 @@
+.snapshots__like {
+    width: 22px;
+    height: 19px;
+    background-image: url(../../../images/like.svg);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    align-self: center;
+    transition: opacity 0.3s ease;
+}
+
+.snapshots__like:hover {
+    opacity: 0.5;
+}

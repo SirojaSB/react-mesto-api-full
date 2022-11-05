@@ -1,0 +1,7 @@
+.auth__text_login {
+    transition: opacity 0.3s ease;
+}
+
+.auth__text_login:hover {
+    opacity: 0.6;
+}

@@ -1,0 +1,8 @@
+.snapshots__element {
+    width: 282px;
+    border-radius: 10px;
+    background-color: #fff;
+    color: #000;
+    overflow: hidden;
+    position: relative;
+}
