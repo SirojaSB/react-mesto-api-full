@@ -50,7 +50,7 @@ function App() {
   const handleLogin = async (password, email) => {
       try {
           const { token } = await authorize(password, email);
-          const { data } = await validateToken(token);
+          const data = await validateToken(token);
           setUserEmail(data.email);
           setIsLoggedIn(true);
           localStorage.setItem('jwt', token);
@@ -65,7 +65,7 @@ function App() {
       const token = localStorage.getItem('jwt');
       if (token) {
           try {
-              const { data } = await validateToken(token);
+              const data = await validateToken(token);
               setUserEmail(data.email);
               setIsLoggedIn(true);
           } catch (err) {
@@ -87,7 +87,8 @@ function App() {
 
   const getCardsInfo = async () =>{
         try{
-            const res = await api.getCards();
+            const token = localStorage.getItem('jwt');
+            const res = await api.getCards(token);
             setCards(res);
         }
         catch (err) {
@@ -104,8 +105,9 @@ function App() {
 
   const handleCardLike = async (card) => {
       try {
-          const isLiked = card.likes.some(i => i._id === currentUser._id);
-          const newCard = await api.changeLikeCardStatus(card._id, isLiked)
+          const token = localStorage.getItem('jwt');
+          const isLiked = card.likes.some(i => i === currentUser._id);
+          const newCard = await api.changeLikeCardStatus(card._id, isLiked, token)
           setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
       }
       catch (err) {
@@ -115,7 +117,8 @@ function App() {
 
   const handleCardDelete = async (card) => {
       try {
-          await api.deleteCard(card._id)
+          const token = localStorage.getItem('jwt');
+          await api.deleteCard(card._id, token)
           setCards((state) => state.filter((c) => c._id !== card._id));
       }
       catch (err) {
@@ -125,7 +128,8 @@ function App() {
 
   const getFullUserInfo = async () =>{
         try{
-            const info = await api.getUserInfo();
+            const token = localStorage.getItem('jwt');
+            const info = await api.getUserInfo(token);
             setCurrentUser(info);
         }
         catch (err) {
@@ -160,7 +164,8 @@ function App() {
 
   const handleAddPlaceSubmit = async (data) => {
         try {
-            const newCard = await api.postCard(data);
+            const token = localStorage.getItem('jwt');
+            const newCard = await api.postCard(data, token);
             setCards([newCard, ...cards]);
             closeAllPopups();
         }
@@ -171,7 +176,8 @@ function App() {
 
   const handleUpdateUser = async (data) =>{
         try {
-            const info = await api.changeUserInfo(data);
+            const token = localStorage.getItem('jwt');
+            const info = await api.changeUserInfo(data, token);
             setCurrentUser(info);
             closeAllPopups();
         }
@@ -182,7 +188,8 @@ function App() {
 
   const handleUpdateAvatar = async (data) =>{
         try {
-            const avatar = await api.changeUserAvatar(data);
+            const token = localStorage.getItem('jwt');
+            const avatar = await api.changeUserAvatar(data, token);
             setCurrentUser(avatar);
             closeAllPopups();
         }
