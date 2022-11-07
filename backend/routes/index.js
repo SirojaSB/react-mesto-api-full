@@ -6,7 +6,7 @@ const { verifyToken } = require('../middlewares/auth');
 const { validateLoginData, validateCreateUserData } = require('../utils/userValidate');
 const NotFoundError = require('../utils/errors/notFoundError');
 
-//crash test
+// crash test
 router.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');

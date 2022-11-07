@@ -6,7 +6,7 @@ const errorsHandling = require('./middlewares/errorsHandling');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const cors = require('./middlewares/cors');
 
-const { PORT = 3000} = process.env;
+const { PORT = 3000, NODE_ENV } = process.env;
 
 const app = express();
 
@@ -24,4 +24,6 @@ app.use(errorLogger);
 app.use(errors());
 app.use(errorsHandling);
 
-app.listen(PORT);
+app.listen(PORT, () => {
+  console.log(`App listening in ${NODE_ENV || 'develop'} mode at port ${PORT}`);
+});
