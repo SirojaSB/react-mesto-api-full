@@ -13,3 +13,18 @@
 -  Защита роутов авторизацией;
 -  Бережное хранение паролей в виде хэша;
 -  Централизованная обработка ошибок.
+
+### Технологии
+Frontend:
+- HTML5
+- CSS3
+- Flexbox
+- Grid-layout
+- React
+- JavaScript (стандарт ES6)
+- Методология БЭМ
+
+Backend:
+- NodeJs
+- ExpressJs
+- MongoDB
